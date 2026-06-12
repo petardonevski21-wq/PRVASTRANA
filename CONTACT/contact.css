@@ -1,0 +1,1708 @@
+/* РЕСЕТ И ОСНОВИ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#appointment {
+    scroll-margin-top: 150px;
+}
+body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+}
+
+/* --- СЕКЦИЈА 1: HERO --- */
+.hero-section {
+    width: 100%;
+    margin-bottom: 80px;
+    margin-top: 85px; /* <--- ДОДАДЕНО: Ја турка сликата надолу за да не влегува под менито */
+}
+
+.hero-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* Висина на сликата */
+    overflow: hidden;
+}
+
+.hero-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-title {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 48px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-text-bottom {
+    text-align: center;
+    max-width: 800px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+}
+
+.hero-text-bottom p {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+/* --- СЕКЦИЈА 2: ИНФО --- */
+.info-section {
+    display: flex;
+    max-width: 1400px;
+    margin: 100px auto;
+    padding: 0 40px;
+    gap: 80px;
+    align-items: stretch; /* ОВА Е КЛУЧОТ! (Претходно беше flex-start) */
+}
+
+.info-image {
+    flex: 1;
+    display: flex;
+}
+
+.info-image img {
+    width: 100%;
+    height: 100%; /* ОВА СМЕНИ ГО: Претходно беше auto */
+    object-fit: cover; /* Ова гарантира дека сликата нема да се сплеска, туку ќе се исече фино */
+}
+
+.info-content {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.info-content h2 {
+    font-size: 42px;
+    margin-bottom: 40px;
+}
+
+.info-paragraphs p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 25px;
+}
+
+.info-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 40px;
+}
+
+.info-details-grid h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-details-grid p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #4a4a4a;
+}
+
+.memorial-hours {
+    margin-top: 30px;
+}
+
+.contact-links {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 14px;
+    transition: opacity 0.3s;
+}
+
+.icon-link:hover {
+    opacity: 0.6;
+}
+
+/* --- СЕКЦИЈА 3: МАПА --- */
+.map-section {
+    width: 100%;
+    margin: 100px 0;
+    filter: grayscale(100%) contrast(90%); /* Ја прави мапата сива за полуксузен изглед */
+}
+
+/* --- СЕКЦИЈА 4: ФОРМА ЗА ЗАКАЖУВАЊЕ --- */
+.appointment-section {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto 120px;
+    padding: 0 40px;
+    gap: 80px;
+}
+
+.appointment-form-container {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.appointment-form-container h2 {
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+
+.input-group {
+    margin-bottom: 35px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    padding: 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group textarea {
+    height: 100px;
+    resize: none;
+    border: 1px solid #cccccc; /* Текстареата на сликата има целосна рамка */
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #000000;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #0e1217;
+    color: #ffffff;
+    border: none;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #2a2f35;
+}
+
+.appointment-image {
+    flex: 1;
+}
+
+.appointment-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    object-fit: cover;
+}
+
+/* --- АНИМАЦИЈА ЗА ПОЈАВУВАЊЕ --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.site-footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 160px 8% 30px 8%; /* <--- 160px padding горе (60 стари + 100 нови) */
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+/* Лева страна (Лого и инпут) */
+.footer-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+}
+
+.newsletter-box {
+    display: flex;
+    border: 1px solid #000000;
+    max-width: 300px;
+    height: 45px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.newsletter-btn {
+    background: transparent;
+    border: none;
+    border-left: 1px solid #000000;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Десна страна (Линкови) */
+.footer-links {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+.link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* --- НОВИ СТИЛОВИ ЗА ЛИНКОВИТЕ И АНИМАЦИЈАТА --- */
+.footer-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+    font-weight: 400;
+}
+
+/* Анимација - Линија што се појавува на ховер */
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: #000000;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+/* Долна лента */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.bottom-left, 
+.bottom-right {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.bottom-center {
+    display: flex;
+    gap: 40px; /* Ги става Phone и Email во еден ред како на сликата */
+    align-items: center;
+}
+
+.bottom-center p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    color: #000000;
+}
+
+/* Социјални мрежи (Икони и текст) */
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Тргање на анимацијата за социјалните мрежи за да не се подвлекува иконата */
+.social-link::after {
+    display: none;
+}
+
+.social-link:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* --- MEGA MENU CSS (ОСНОВНА ЛОГИКА) --- */
+.clothing-wrapper, 
+.tailoring-wrapper, 
+.occasion-wrapper {
+    /* Тргнат е падингот за да не се поместува копчето! */
+    display: inline-block; 
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 8% 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Спречува менито да се збуни додека е скриено */
+    transform: translateY(15px); 
+    
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    
+    /* ТРГНАТ Е ДИЛЕЈОТ ОД 0.15s ЗА ДА СЕ ГАСИ ИСТОВРЕМЕНО СО ДРУГИТЕ */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* Прикажување на менито при hover за СИТЕ ТРИ менија */
+.clothing-wrapper:hover .mega-menu, 
+.tailoring-wrapper:hover .mega-menu,
+.occasion-wrapper:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    
+    /* Кога ќе ставиш маус, се пали ВЕДНАШ без чекање (0s delay) */
+    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s, visibility 0s linear 0s;
+}
+
+/* Линија под текстот и курсор при hover И додека си внатре во самото мени */
+.clothing-wrapper:hover > a, 
+.tailoring-wrapper:hover > a,
+.occasion-wrapper:hover > a {
+    text-decoration: underline !important;
+    text-underline-offset: 6px; /* Ја спушта линијата малку подолу за да изгледа поелегантно */
+    cursor: pointer !important;
+    color: #000000 !important; /* Ова осигурува дека зборот горе останува црн и активен */
+}
+
+/* Позиционирање на главните линкови и курсор 'раче' */
+.clothing-wrapper > a, 
+.tailoring-wrapper > a,
+.occasion-wrapper > a {
+    position: relative; 
+    cursor: pointer !important;
+}
+
+/* НОВ НЕВИДЛИВ МОСТ (Го поправа Glitch-от без да чепка дизајн, стои само под зборот) */
+.clothing-wrapper > a::after, 
+.tailoring-wrapper > a::after,
+.occasion-wrapper > a::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0; /* Сменето за да не се пали од страна */
+    width: 100%; /* Сменето да биде точно колку зборот */
+    height: 60px; /* Се спушта надолу точно до менито */
+    background: transparent;
+    z-index: 998;
+}
+
+/* --- CLOTHING МЕНИ ДИЗАЈН --- */
+.mega-menu-left {
+    display: flex;
+    gap: 120px;
+}
+
+.mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.mega-menu-column h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.mega-menu-column a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: 1.5px !important;
+    color: #555555 !important;
+    font-weight: 400 !important;
+    transition: color 0.3s ease !important;
+    text-decoration: none;
+}
+
+.mega-menu-column a:hover {
+    color: #000000 !important;
+    opacity: 1 !important; 
+}
+
+.mega-menu-right {
+    display: flex;
+    gap: 30px;
+}
+
+.mega-img-wrapper {
+    width: 250px; 
+    height: 330px;
+    overflow: hidden;
+}
+
+.mega-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.mega-img-wrapper:hover img {
+    transform: scale(1.04);
+}
+
+/* --- TAILORING МЕНИ ДИЗАЈН --- */
+.tailoring-grid {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center; /* Ги центрира 3-те картички убаво на средина */
+}
+
+.tailoring-card {
+    position: relative;
+    flex: 1;
+    max-width: 380px; /* Ограничување на ширината за да изгледа елегантно */
+    height: 330px;    /* Иста висина како сликите во Clothing менито */
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.tailoring-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Зум ефект како кај Clothing */
+.tailoring-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Темниот градиент одоздола за да се чита текстот */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Градиентот покрива само долна половина */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none; /* Да не пречи на кликањето */
+}
+
+/* Текстот врз сликата */
+.card-title {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* --- OCCASION МЕНИ ДИЗАЈН --- */
+.occasion-left {
+    width: 25%;
+}
+
+.occasion-right {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
+.occasion-card {
+    position: relative;
+    width: 250px; /* Иста ширина како сликите во Clothing */
+    height: 330px; /* Иста висина како сите други */
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.occasion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.occasion-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Градиент за Occasion (ист ефект, помал опсег) */
+.occasion-card .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Текстот врз сликата (според сликата: помал, десно порамнет) */
+.occasion-card .card-title {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-transform: uppercase;
+}
+/* HEADER */
+.site-header {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 60px;
+
+    z-index: 1000;
+
+    background-color: #ffffff; /* <--- СМЕНЕТО ВО БЕЛО */
+    color: #000000; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Тенка линија за убаво да се одвои од сликата */
+
+    transition:
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.45s ease;
+}
+
+/* Кога hover-аш на цело мени */
+.site-header:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Кога скролаш */
+.site-header.scrolled {
+    position: fixed;
+    top: 0;
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Криење header */
+.site-header.hide-header {
+    transform: translateY(-120%);
+    opacity: 0;
+}
+.site-header.hidden {
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.site-header.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+/* LOGO */
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #000000;
+    text-decoration: none;
+}
+
+/* NAVIGATION */
+.nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-links a {
+    font-family: 'Cormorant Garamond', serif;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* ICONS */
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.05);
+}
+
+
+/* ========================================= */
+/* --- SEARCH PANEL (RIGHT SLIDER) --- */
+/* ========================================= */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005; 
+    transition: opacity 0.5s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    left: auto;
+    width: 600px; 
+    max-width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 80px 60px; 
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.06); 
+}
+
+.search-panel.active {
+    right: 0; 
+}
+
+.search-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    padding: 10px;
+}
+
+.search-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.search-content {
+    margin-top: 80px;
+}
+
+.search-title {
+    font-family: 'Inter', sans-serif; 
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    color: #666666;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5; 
+    padding-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; 
+    color: #000000;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #cccccc;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.search-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    padding-left: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.search-submit-btn:hover {
+    opacity: 0.5;
+}
+
+.search-suggestions {
+    margin-top: 50px; 
+}
+
+.suggestions-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888888; 
+    margin-bottom: 25px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px; 
+}
+
+.suggestions-list li a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; 
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.suggestions-list li a:hover {
+    opacity: 0.5;
+    transform: translateX(8px);
+}
+
+/* ========================================= */
+/* --- CART PANEL (SHOPPING BAG) --- */
+/* ========================================= */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    z-index: 10005;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 10006;
+    transition: right .6s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    padding: 5px;
+}
+
+.cart-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.cart-content {
+    flex: 1;
+    padding: 30px 50px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.cart-item-img-wrapper {
+    width: 120px;
+    height: 160px;
+    background-color: #f9f9f9;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.cart-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+}
+
+.cart-item-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.cart-item-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #777777;
+    margin-bottom: 5px;
+}
+
+.cart-item-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    transition: background-color 0.3s;
+}
+
+.qty-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.qty-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999999;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cart-item-remove:hover {
+    color: #000000;
+}
+
+.cart-footer {
+    padding: 30px 50px;
+    border-top: 1px solid #eeeeee;
+    background-color: #ffffff;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-shipping-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #777777;
+    margin-bottom: 25px;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-checkout-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* ========================================= */
+/* --- RESPONSIVE DESIGN (TABLET & MOBILE) --- */
+/* ========================================= */
+
+/* КРИЕЊЕ НА БУРГЕР МЕНИТО НА ДЕСКТОП */
+.mobile-menu-toggle {
+    display: none; 
+}
+
+/* ОСНОВНИ СТИЛОВИ ЗА МОБИЛНО МЕНИ */
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005;
+    transition: opacity 0.4s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu-panel.active {
+    right: 0 !important;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.mobile-menu-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.mobile-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 25px;
+}
+
+.mobile-menu-content a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.mobile-menu-content a:hover {
+    color: #c04212; 
+    padding-left: 10px;
+}
+
+/* --- СТИЛОВИ ЗА ПАЃАЧКИТЕ МЕНИЈА ВО МОБИЛНО --- */
+.mobile-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.mobile-dropdown-header a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.mobile-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    color: #000000;
+    transition: transform 0.3s ease;
+}
+
+.mobile-submenu {
+    display: none; /* Скриено по дифолт */
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.mobile-submenu.active {
+    display: flex; /* Се појавува кога ќе кликнеш + */
+}
+
+.mobile-submenu a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    color: #555555 !important;
+    padding-left: 0 !important;
+}
+
+.mobile-submenu a:hover {
+    color: #000000 !important;
+}
+/* ========================================= */
+/* --- УНИВЕРЗАЛНА РЕСПОНЗИВНОСТ (КАКО ABOUT) --- */
+/* ========================================= */
+@media screen and (max-width: 991px) {
+    html, body { 
+        overflow-x: hidden !important; 
+        max-width: 100%; 
+        position: relative; 
+    }
+
+    /* Хедер конфигурација според prvprimer.JPG */
+    .nav-links { display: none !important; }
+    .icon-btn[aria-label="Profile"] { display: none !important; } 
+    
+    .mobile-menu-toggle { 
+        display: flex !important; 
+        align-items: center; 
+        justify-content: center; 
+        order: 3;
+    }
+    
+    /* 1. ИКОНИТЕ ВО ХЕДЕРОТ - ВРАТЕНИ ОРИГИНАЛНИ (БЕЗ ДА РУШАТ НИШТО) */
+    .header-icons {
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important; /* Минимален простор меѓу нив */
+        margin-left: auto; /* Ги турка скроз десно */
+    }
+
+    .site-header { 
+        padding: 20px 24px !important; 
+    }
+    
+    .mobile-menu-toggle, 
+    .icon-btn[aria-label="Search"], 
+    .icon-btn[aria-label="Cart"] {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 5px; /* За да не се многу раздалечени */
+    }
+
+    .logo { 
+        font-size: 26px !important; 
+        letter-spacing: 2px !important;
+    }
+
+/* 2. SHOPPING CART */
+    .cart-panel { 
+        width: 100% !important; 
+        max-width: 100% !important; 
+        right: -100%; 
+        background-color: #ffffff;
+        transition: right 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 10010 !important; /* <--- ОВА Е КЛУЧНАТА ПРОМЕНА (Го става панелот НАД темната позадина) */
+        padding: 0 !important;
+    }
+    .cart-panel.active { right: 0 !important; }
+    
+    .cart-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 24px !important;
+        border-bottom: 1px solid #f2f2f2 !important;
+    }
+    
+    .cart-title {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 28px !important;
+        font-weight: 400 !important;
+    }
+    
+    .cart-content {
+        padding: 24px !important;
+    }
+
+    .cart-item { 
+        display: flex !important; 
+        flex-direction: row !important; /* Слика лево, текст десно */
+        align-items: stretch !important; 
+        gap: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .cart-item-img-wrapper { 
+        width: 110px !important; 
+        height: 145px !important; 
+        aspect-ratio: auto !important;
+        flex-shrink: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .cart-item-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    .cart-item-details {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+    
+    .cart-item-top {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .cart-item-name {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 21px !important;
+        font-weight: 400 !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+        color: #000000 !important;
+    }
+    
+    .cart-item-price {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        color: #000000 !important;
+        margin-left: 10px !important;
+        white-space: nowrap !important;
+    }
+    
+    .cart-item-meta {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 13px !important;
+        color: #8c8c8c !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .cart-item-bottom {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-top: auto !important;
+        width: 100% !important;
+    }
+    
+    .cart-quantity {
+        display: flex !important;
+        align-items: center !important;
+        border: 1px solid #dcdcdc !important;
+        height: 32px !important;
+    }
+    
+    .qty-btn {
+        background: none !important;
+        border: none !important;
+        padding: 0 12px !important;
+        font-size: 15px !important;
+        height: 100% !important;
+        cursor: pointer !important;
+        color: #000000 !important;
+    }
+    
+    .qty-num {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 12px !important;
+        padding: 0 4px !important;
+    }
+    
+    .cart-item-remove {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 12px !important;
+        color: #8c8c8c !important;
+        text-decoration: underline !important;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .cart-footer {
+        padding: 24px !important;
+        border-top: 1px solid #f2f2f2 !important;
+    }
+    
+    .cart-subtotal {
+        display: flex !important;
+        justify-content: space-between !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .cart-shipping-note {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 12px !important;
+        color: #8c8c8c !important;
+        margin-bottom: 24px !important;
+    }
+    
+    .cart-checkout-btn {
+        width: 100% !important;
+        padding: 16px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        letter-spacing: 1.5px !important;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border: none !important;
+    }
+    
+    .search-panel { width: 100% !important; padding: 40px 20px !important; right: -100%; }
+    .search-panel.active { right: 0 !important; }
+    
+    /* РЕДИЗАЈН НА МОБИЛНО МЕНИ */
+    .mobile-menu-panel { 
+        width: 100% !important; 
+        max-width: 100% !important; 
+        right: -100%; 
+        background-color: #ffffff;
+        transition: right 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .mobile-menu-panel.active { 
+        right: 0 !important; 
+    }
+
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px !important;
+        border-bottom: 1px solid #f2f2f2 !important;
+        position: relative;
+        background-color: #ffffff;
+        height: 80px;
+    }
+
+    .mobile-menu-logo {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 28px !important;
+        font-weight: 400 !important;
+        letter-spacing: 3px !important;
+        color: #000000 !important;
+        text-decoration: none !important;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .mobile-profile-btn {
+        color: #000000 !important;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .mobile-close-btn {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+        color: #000000 !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-menu-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 !important; 
+        gap: 0 !important;
+    }
+
+    .mobile-dropdown {
+        width: 100%;
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+    .mobile-dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px !important;
+        border-bottom: none !important;
+        cursor: pointer;
+    }
+
+    .mobile-dropdown-header a {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        color: #000000 !important;
+        letter-spacing: 0.3px !important;
+        text-decoration: none !important;
+    }
+
+    .mobile-toggle-btn {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 300 !important;
+        color: #000000 !important;
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: transform 0.3s ease;
+    }
+
+    .simple-link {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        color: #000000 !important;
+        letter-spacing: 0.3px !important;
+        text-decoration: none !important;
+        padding: 24px !important;
+        border-bottom: 1px solid #f2f2f2;
+        display: block;
+    }
+
+/* Позадина на отвореното подмени како на сликата kateg.JPG */
+.mobile-submenu {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 24px !important;
+    background-color: #f9f9f9 !important; /* Светло сива позадина во внатрешноста */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease, opacity 0.3s ease;
+}
+.mobile-submenu.active {
+    max-height: 500px !important; /* Ограничена висина за да нема скролање */
+    opacity: 1;
+    padding: 15px 24px 25px 24px !important;
+}
+/* Насловот CATEGORIES */
+.mobile-categories-heading {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 15px !important;
+    margin-top: 5px !important;
+}
+/* 3. ЛИНКОВИТЕ (Shop All, Suits...) СЕГА СЕ ЕДНО ПОД ДРУГО СУПЕР ПРЕЦИЗНО */
+.mobile-submenu-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important; /* Елегантно растојание */
+    margin-bottom: 20px !important;
+}
+.mobile-submenu-links a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    color: #777777 !important; /* Сива боја како на kateg.JPG */
+    text-decoration: none !important;
+}
+
+/* --- СЛИКИТЕ ВО CLOTHING МЕНИТО НА МОБИЛЕН --- */
+.mobile-submenu-images {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+.mobile-img-card {
+    position: relative !important;
+    flex: 1 !important;
+    aspect-ratio: 4 / 3 !important; /* Пејзажен сооднос, ниски и широки за да не прават скрол */
+    overflow: hidden !important;
+    display: block !important;
+}
+
+.mobile-img-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* Ако ги имаш додадено текстовите врз сликите, овие стилови остануваат: */
+    .mobile-img-card .card-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%) !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+    }
+
+.mobile-img-card .card-title-top {
+        position: absolute !important;
+        top: 45% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        color: #ffffff !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 19px !important;
+        white-space: nowrap !important;
+        z-index: 2 !important;
+    }
+
+.mobile-img-card .card-title-bottom {
+        position: absolute !important;
+        bottom: 16px !important;
+        left: 16px !important;
+        color: #ffffff !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        letter-spacing: 1px !important;
+        z-index: 2 !important;
+    }
+    /* Останати прилагодувања за содржината на страната */
+    .search-input { font-size: 24px !important; }
+    .hero-section { margin-top: 65px; }
+    .hero-title { font-size: 32px; width: 90%; text-align: center; bottom: 25px; }
+    .hero-text-bottom { margin: 40px auto 0; padding: 0 15px; }
+    .info-section, .appointment-section { flex-direction: column; gap: 50px; margin: 60px auto; padding: 0 20px; }
+    .info-content h2, .appointment-form-container h2 { font-size: 32px; margin-bottom: 30px; }
+    .appointment-form-container { padding-right: 0; }
+    .appointment-image img { min-height: 400px; }
+    .info-details-grid { grid-template-columns: 1fr; gap: 30px; }
+    .site-footer { padding: 60px 20px 30px; }
+    .footer-top { flex-direction: column; }
+    .footer-links { flex-direction: column; gap: 40px; }
+    .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+    .bottom-left, .bottom-right, .bottom-center { flex-direction: column; gap: 15px; }
+}

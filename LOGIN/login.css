@@ -1,0 +1,1224 @@
+/* Луксузен ресет и дефинирање на позадината */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Главен контејнер центриран на екранот со flex-direction: row за лева и десна страна */
+.account-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row; /* Овозможува лева и десна страна */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding-top: 90px;
+}
+
+/* ЛЕВА СТРАНА СО ГОЛЕМА СЛИКА */
+.account-image-side {
+    flex: 1; /* Ја зафаќа левата половина */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.account-side-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Овозможува сликата да се прилагоди без да се изобличи */
+}
+
+/* ДЕСНА СТРАНА СО ФОРМИ */
+.account-form-side {
+    flex: 1; /* Ја зафаќа десната половина */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+/* Стил за логото на брендот на десната страна */
+.account-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+/* Опкружување за формите со дефинирана ширина и позиција */
+.account-box-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    min-height: 480px; /* Дава стабилност при промена на формите */
+}
+
+/* Заеднички стил за двата блока (Login и Register) */
+.account-form-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(15px);
+}
+
+/* Класа која ја активира видливоста на формата со мазна анимација */
+.account-form-block.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    position: relative; /* Овозможува висината на контејнерот да се прилагоди на активната форма */
+}
+
+/* Наслови во префинет Cormorant Garamond стил */
+.account-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.account-subtitle {
+    font-size: 13px;
+    color: #777777;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+/* Форма и елементи за внесување */
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    color: #000000;
+}
+
+/* Луксузни инпути со долна линија наместо тешки рамки */
+.input-group input {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #000000;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.4s ease;
+}
+
+.input-group input:focus {
+    border-color: #000000; /* Линијата потемнува при клик */
+}
+
+.input-group input::placeholder {
+    color: #cccccc;
+    font-weight: 300;
+}
+
+/* Линкови и ситни копчиња */
+.form-link-forgot {
+    font-size: 11px;
+    color: #777777;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-link-forgot:hover {
+    color: #000000;
+}
+
+/* Луксузно црно копче со ефект на проѕирност на hover */
+.account-submit-btn {
+    margin-top: 15px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    border: 1px solid #000000; /* Почетна рамка */
+}
+
+.account-submit-btn:hover {
+    background-color: #ffffff; /* Бело копче при hover */
+    color: #000000; /* Црни букви при hover */
+    border: 1px solid #000000; /* Црна рамка при hover */
+}
+
+/* Футер за префрлање помеѓу формите */
+.account-switch-footer {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 13px;
+    color: #777777;
+    font-weight: 300;
+}
+
+.switch-trigger {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 5px;
+    padding: 2px;
+}
+
+.switch-trigger:hover {
+    color: #555555;
+}
+
+/* HEADER - СРЕДЕН ДА Е НАЈГОРЕ И УПАЛЕН ЦЕЛО ВРЕМЕ */
+.site-header {
+    position: fixed; /* Стои фиксно додека скролаш */
+    top: 0; /* Залепен најгоре */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    z-index: 1000;
+    background-color: #ffffff; /* Упален цело време */
+    color: #000000; /* Црн текст */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Мала сенка за убав изглед */
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease;
+}
+
+.site-header.hide-header {
+    transform: translateY(-120%);
+    opacity: 0;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: black;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-links a {
+    font-family: 'Cormorant Garamond', serif;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   MEGA MENU
+========================================= */
+.clothing-wrapper,
+.tailoring-wrapper,
+.occasion-wrapper {
+    display: inline-block;
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 8% 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(15px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.clothing-wrapper:hover .mega-menu,
+.tailoring-wrapper:hover .mega-menu,
+.occasion-wrapper:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s, visibility 0s linear 0s;
+}
+
+.clothing-wrapper:hover > a,
+.tailoring-wrapper:hover > a,
+.occasion-wrapper:hover > a {
+    text-decoration: underline !important;
+    text-underline-offset: 6px;
+    cursor: pointer !important;
+    color: #000000 !important;
+}
+
+.clothing-wrapper > a,
+.tailoring-wrapper > a,
+.occasion-wrapper > a {
+    position: relative;
+    cursor: pointer !important;
+}
+
+.clothing-wrapper > a::after,
+.tailoring-wrapper > a::after,
+.occasion-wrapper > a::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    z-index: 998;
+}
+/* CLOTHING MENU */
+.mega-menu-left {
+    display: flex;
+    gap: 120px;
+}
+
+.mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.mega-menu-column h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.mega-menu-column a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: 1.5px !important;
+    color: #555555 !important;
+    font-weight: 400 !important;
+    text-decoration: none;
+}
+
+.mega-menu-right {
+    display: flex;
+    gap: 30px;
+}
+
+.mega-img-wrapper {
+    width: 250px;
+    height: 330px;
+    overflow: hidden;
+}
+
+.mega-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TAILORING MENU */
+.tailoring-grid {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+.tailoring-card {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+    height: 330px;
+    overflow: hidden;
+    display: block;
+}
+
+.tailoring-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* OCCASION MENU */
+.occasion-left {
+    width: 25%;
+}
+
+.occasion-right {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
+.occasion-card {
+    position: relative;
+    width: 250px;
+    height: 330px;
+    overflow: hidden;
+    display: block;
+}
+
+.occasion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.site-footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 160px 8% 30px 8%; 
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+}
+
+.newsletter-box {
+    display: flex;
+    border: 1px solid #000000;
+    max-width: 300px;
+    height: 45px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.newsletter-btn {
+    background: transparent;
+    border: none;
+    border-left: 1px solid #000000;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.footer-links {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+.link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.footer-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+    font-weight: 400;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: #000000;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.bottom-left, 
+.bottom-right {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.bottom-center {
+    display: flex;
+    gap: 40px; 
+    align-items: center;
+}
+
+.bottom-center p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-link::after {
+    display: none;
+}
+
+.social-link:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+}
+/* ========================================= */
+/* --- SEARCH PANEL (RIGHT SLIDER) --- */
+/* ========================================= */
+
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005; 
+    transition: opacity 0.5s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    left: auto;
+    width: 600px; 
+    max-width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 80px 60px; 
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.06); 
+}
+
+.search-panel.active {
+    right: 0; 
+}
+
+.search-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    padding: 10px;
+}
+
+.search-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.search-content {
+    margin-top: 80px;
+}
+
+.search-title {
+    font-family: 'Inter', sans-serif; 
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    color: #666666;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5; 
+    padding-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; 
+    color: #000000;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #cccccc;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.search-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    padding-left: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.search-submit-btn:hover {
+    opacity: 0.5;
+}
+
+/* --- SEARCH SUGGESTIONS --- */
+.search-suggestions {
+    margin-top: 50px; 
+}
+
+.suggestions-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888888; 
+    margin-bottom: 25px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px; 
+}
+
+.suggestions-list li a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; 
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.suggestions-list li a:hover {
+    opacity: 0.5;
+    transform: translateX(8px);
+}
+
+/* ========================================= */
+/* --- CART PANEL (SHOPPING BAG) --- */
+/* ========================================= */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    z-index: 10005;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 10006;
+    transition: right .6s ease;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+/* Промена на главниот панел за да биде флексибилен (футерот да стои долу) */
+.cart-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER НА КОЛИЧКАТА --- */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    padding: 5px;
+}
+
+.cart-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+/* --- СОДРЖИНА НА КОЛИЧКАТА (ПРОДУКТИ) --- */
+.cart-content {
+    flex: 1; /* Го зафаќа слободниот простор */
+    padding: 30px 50px;
+    overflow-y: auto; /* Скролање ако има многу продукти */
+}
+
+.cart-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.cart-item-img-wrapper {
+    width: 120px;
+    height: 160px;
+    background-color: #f9f9f9;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.cart-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+}
+
+.cart-item-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.cart-item-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #777777;
+    margin-bottom: 5px;
+}
+
+.cart-item-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* Контрола за количина */
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    transition: background-color 0.3s;
+}
+
+.qty-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.qty-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+/* Копче за бришење */
+.cart-item-remove {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999999;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cart-item-remove:hover {
+    color: #000000;
+}
+
+/* --- ФУТЕР НА КОЛИЧКАТА (Checkout) --- */
+.cart-footer {
+    padding: 30px 50px;
+    border-top: 1px solid #eeeeee;
+    background-color: #ffffff;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-shipping-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #777777;
+    margin-bottom: 25px;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-checkout-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* ========================================= */
+/* --- MOBILE & TABLET RESPONSIVE DESIGN --- */
+/* ========================================= */
+
+.hamburger-btn {
+    display: none; /* Скриено на десктоп */
+}
+
+@media (max-width: 1024px) {
+    /* HEADER (како на prvprimer.JPG) */
+    .site-header {
+        padding: 15px 25px;
+    }
+    
+    .nav-links {
+        display: none; /* Се кријат десктоп линковите */
+    }
+    
+    .hamburger-btn {
+        display: flex;
+    }
+    
+    /* Криење на account иконата од главниот хедер бидејќи оди во мобилното мени */
+    .icon-btn[aria-label="Account"] {
+        display: none;
+    }
+
+    /* LOGIN СЕКЦИЈА */
+    .account-container {
+        flex-direction: column;
+        padding-top: 80px;
+    }
+
+    .account-image-side {
+        display: none; /* Се крие големата слика за почист изглед на телефон */
+    }
+
+    .account-form-side {
+        width: 100%;
+        padding: 40px 25px;
+    }
+
+    .account-box-wrapper {
+        max-width: 100%;
+    }
+
+    /* FOOTER */
+    .site-footer {
+        padding: 60px 25px 30px 25px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-left {
+        min-width: 100%;
+    }
+
+    .newsletter-box {
+        max-width: 100%;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    /* CART & SEARCH ПАНЕЛИ (како на tret primer.JPG) */
+    .cart-panel, 
+    .search-panel {
+        width: 100%;
+        right: -100%; /* За анимација */
+        padding: 0;
+    }
+
+    .cart-header,
+    .search-close-btn {
+        padding: 20px 25px;
+    }
+
+    .search-content {
+        padding: 0 25px;
+        margin-top: 40px;
+    }
+
+    .cart-content {
+        padding: 20px 25px;
+    }
+
+    .cart-footer {
+        padding: 25px;
+    }
+
+    .cart-item-img-wrapper {
+        width: 90px;
+        height: 120px;
+    }
+}
+
+/* ========================================= */
+/* --- MOBILE MENU PANEL (kateg.JPG) --- */
+/* ========================================= */
+
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10008; 
+    transition: opacity 0.5s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 100%;
+    max-width: 450px; /* На таблет нема да фаќа цел екран, на телефон ќе фаќа */
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10009;
+    transition: right 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.mobile-menu-panel.active {
+    right: 0; /* Професионална анимација од десно кон лево */
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-menu-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: #000000;
+}
+
+.mobile-accordion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-accordion-item {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.mobile-accordion-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 25px;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-accordion-btn span {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-accordion-btn.active span {
+    transform: rotate(180deg);
+}
+
+.mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    background-color: #fafafa;
+}
+
+.mobile-accordion-inner {
+    padding: 20px 25px 30px 25px;
+}
+
+.mob-category-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.mob-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mob-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #555555;
+    text-decoration: none;
+}
+
+.mob-images {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.mob-images img {
+    width: 50%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}

@@ -1,0 +1,1268 @@
+/* =========================================
+   ОСНОВНИ РЕСЕТИРАЊА И ПРОМЕНЛИВИ
+========================================= */
+:root {
+    --bg-color: #fbfaf8;
+    --text-dark: #1a1a1a;
+    --text-gray: #666666;
+    --accent-color: black;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   БЕЛО HEADER МЕНИ + HOVER + MEGA MENU
+========================================= */
+/* HEADER */
+.site-header {
+    position: fixed; 
+    top: 0; /* Ова го става најгоре (порано беше 40px) */
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 60px;
+
+    z-index: 1000;
+
+    background-color: transparent;
+    color: #000000; /* Сменето во црно за да се гледа на светлата позадина */
+
+    transition:
+    background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s ease,
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.45s ease;
+}
+
+/* Кога hover-аш на цело мени */
+.site-header:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Кога скролаш */
+.site-header.scrolled {
+    position: fixed;
+    top: 0;
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Криење header */
+.site-header.hide-header {
+    transform: translateY(-120%);
+    opacity: 0;
+}
+.site-header.hidden {
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+.site-header.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+/* LOGO */
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #000000;
+    text-decoration: none;
+}
+
+/* NAVIGATION */
+.nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-links a {
+    font-family: 'Cormorant Garamond', serif;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* ICONS */
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   WRAPPERS
+========================================= */
+.clothing-wrapper,
+.tailoring-wrapper,
+.occasion-wrapper {
+    display: inline-block;
+}
+
+/* =========================================
+   MEGA MENU
+========================================= */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 8% 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(15px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
+}
+
+/* SHOW MENU */
+.clothing-wrapper:hover .mega-menu,
+.tailoring-wrapper:hover .mega-menu,
+.occasion-wrapper:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+    opacity 0.3s ease 0s,
+    transform 0.3s ease 0s,
+    visibility 0s linear 0s;
+}
+
+/* ACTIVE LINK */
+.clothing-wrapper:hover > a,
+.tailoring-wrapper:hover > a,
+.occasion-wrapper:hover > a {
+    text-decoration: underline !important;
+    text-underline-offset: 6px;
+    cursor: pointer !important;
+    color: #000000 !important;
+}
+
+/* MAIN LINKS */
+.clothing-wrapper > a,
+.tailoring-wrapper > a,
+.occasion-wrapper > a {
+    position: relative;
+    cursor: pointer !important;
+}
+
+/* HOVER BRIDGE */
+.clothing-wrapper > a::after,
+.tailoring-wrapper > a::after,
+.occasion-wrapper > a::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    z-index: 998;
+}
+
+/* =========================================
+   CLOTHING MENU
+========================================= */
+.mega-menu-left {
+    display: flex;
+    gap: 120px;
+}
+
+.mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.mega-menu-column h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.mega-menu-column a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: 1.5px !important;
+    color: #555555 !important;
+    font-weight: 400 !important;
+    text-decoration: none;
+    transition: color 0.3s ease !important;
+}
+
+.mega-menu-column a:hover {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+.mega-menu-right {
+    display: flex;
+    gap: 30px;
+}
+
+.mega-img-wrapper {
+    width: 250px;
+    height: 330px;
+    overflow: hidden;
+}
+
+.mega-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.mega-img-wrapper:hover img {
+    transform: scale(1.04);
+}
+
+/* =========================================
+   TAILORING MENU
+========================================= */
+.tailoring-grid {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+.tailoring-card {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+    height: 330px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.tailoring-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.tailoring-card:hover img {
+    transform: scale(1.04);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-title {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* =========================================
+   OCCASION MENU
+========================================= */
+.occasion-left {
+    width: 25%;
+}
+
+.occasion-right {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
+.occasion-card {
+    position: relative;
+    width: 250px;
+    height: 330px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.occasion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.occasion-card:hover img {
+    transform: scale(1.04);
+}
+
+.occasion-card .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.occasion-card .card-title {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+
+/* =========================================
+   ABOUT US PAGE - ОПШТИ КЛАСИ ЗА НАСЛОВИ И ТЕКСТ
+========================================= */
+.subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+h1, h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+p {
+    font-weight: 300;
+}
+
+/* Главна секција (Hero) */
+.hero {
+    display: flex;
+    min-height: 80vh;
+    align-items: center;
+    background-color: var(--bg-color);
+    padding-top: 150px;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 0 8% 0 15%;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.hero-content h1 em {
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.hero-content p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    max-width: 420px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    border: 1px solid var(--accent-color);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.hero-image {
+    flex: 1;
+    height: 85vh;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Карактеристики (Features) */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 80px 10%;
+    background-color: #f7f5f2;
+    text-align: center;
+    gap: 40px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.feature-item .icon {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 20px;
+    color: var(--accent-color);
+}
+
+.feature-item h3 {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.feature-item p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Heritage (Приказната) */
+.heritage {
+    display: flex;
+    align-items: center;
+    padding: 120px 10%;
+    gap: 8%;
+}
+
+.heritage-image {
+    flex: 1;
+}
+
+.heritage-image img {
+    width: 100%;
+    height: auto;
+    box-shadow: 15px 15px 0px 0px rgba(0,0,0,0.1);
+}
+
+.heritage-text {
+    flex: 1;
+}
+
+.heritage-text h2 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.heritage-text p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* Process (Чекори) - UX Фокус */
+.process {
+    padding: 100px 10%;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.process-header .subtitle {
+    color: #a0a0a0;
+}
+
+.process-header h2 {
+    color: #fff;
+    font-size: 3.5rem;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.step {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.step-number {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.step p {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    line-height: 1.7;
+}
+
+/* Долна секција (Our Promise) */
+.promise {
+    position: relative;
+    height: 60vh;
+    background-image: url('../ABOUT/aboutsliki/aboutdva.png');
+    background-size: cover;
+    background-position: center 30%;
+    display: flex;
+    align-items: center;
+}
+
+.promise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.3) 100%);
+}
+
+.promise-content {
+    position: relative;
+    z-index: 1;
+    padding-left: 15%;
+    max-width: 600px;
+}
+
+.promise-content h2 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+.promise-content p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+
+/* Футер */
+.footer {
+    background-color: var(--bg-color);
+    padding: 80px 10% 30px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-top: 20px;
+    max-width: 300px;
+}
+
+.footer-links h4, .footer-newsletter h4 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-newsletter p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.newsletter-form button {
+    background: transparent;
+    border: none;
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.newsletter-form button:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* JS Анимации */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s , transform 1s;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.8, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* ========================================= */
+/* --- SEARCH PANEL (RIGHT SLIDER) --- */
+/* ========================================= */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005; 
+    transition: opacity 0.5s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    left: auto;
+    width: 600px; 
+    max-width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 80px 60px; 
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.06); 
+}
+
+.search-panel.active {
+    right: 0; 
+}
+
+.search-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    padding: 10px;
+}
+
+.search-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.search-content {
+    margin-top: 80px;
+}
+
+.search-title {
+    font-family: 'Inter', sans-serif; 
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    color: #666666;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5; 
+    padding-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; 
+    color: #000000;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #cccccc;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.search-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    padding-left: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.search-submit-btn:hover {
+    opacity: 0.5;
+}
+
+.search-suggestions {
+    margin-top: 50px; 
+}
+
+.suggestions-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888888; 
+    margin-bottom: 25px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px; 
+}
+
+.suggestions-list li a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; 
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.suggestions-list li a:hover {
+    opacity: 0.5;
+    transform: translateX(8px);
+}
+
+/* ========================================= */
+/* --- CART PANEL (SHOPPING BAG) --- */
+/* ========================================= */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    z-index: 10005;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 10006;
+    transition: right .6s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    padding: 5px;
+}
+
+.cart-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.cart-content {
+    flex: 1;
+    padding: 30px 50px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.cart-item-img-wrapper {
+    width: 120px;
+    height: 160px;
+    background-color: #f9f9f9;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.cart-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+}
+
+.cart-item-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.cart-item-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #777777;
+    margin-bottom: 5px;
+}
+
+.cart-item-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    transition: background-color 0.3s;
+}
+
+.qty-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.qty-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999999;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cart-item-remove:hover {
+    color: #000000;
+}
+
+.cart-footer {
+    padding: 30px 50px;
+    border-top: 1px solid #eeeeee;
+    background-color: #ffffff;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-shipping-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #777777;
+    margin-bottom: 25px;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-checkout-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* КРИЕЊЕ НА БУРГЕР МЕНИТО НА ДЕСКТОП */
+.mobile-menu-toggle {
+    display: none;
+}
+/* ========================================= */
+/* --- МАКЕДОНСКИ RESPONSIVE FIXES (MOBILE & TABLET) --- */
+/* ========================================= */
+@media screen and (max-width: 991px) {
+    /* Глобално заклучување за да НЕМА скролање лево-десно */
+    html, body { overflow-x: hidden !important; max-width: 100%; position: relative; }
+
+    /* Фиксирање на сите панели */
+    .cart-panel, .search-panel, .mobile-menu-panel { position: fixed !important; }
+
+    /* 1. Хедер и Мобилно Мени */
+    .nav-links { display: none !important; }
+    .icon-btn[aria-label="Profile"] { display: none !important; } 
+.mobile-menu-toggle { 
+    display: flex !important; 
+    align-items: center; 
+    justify-content: center; 
+}
+.header-icons {
+    display: flex !important;
+    align-items: center !important;
+}
+    
+    .mobile-menu-overlay {
+        display: block !important; 
+        position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4);
+        opacity: 0; pointer-events: none; z-index: 10005; transition: opacity 0.4s ease;
+    }
+    .mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
+    
+    .mobile-menu-panel {
+        display: flex !important; 
+        position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px;
+        height: 100vh; background-color: #ffffff; z-index: 10006;
+        transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        flex-direction: column; color: #000; overflow-y: auto;
+    }
+    .mobile-menu-panel.active { right: 0 !important; }
+    
+    .m-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 25px 30px; border-bottom: 1px solid #eee; }
+    .m-menu-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 4px; }
+    .m-menu-close { background: none; border: none; font-size: 20px; cursor: pointer; }
+    
+    .m-accordion-item { border-bottom: 1px solid #eee; }
+    .m-accordion-header, .m-simple-link {
+        width: 100%; text-align: left; background: none; border: none;
+        padding: 20px 30px; font-family: 'Inter', sans-serif; font-size: 14px;
+        display: flex; justify-content: space-between; color: #000;
+        text-decoration: none; font-weight: 400; cursor: pointer;
+    }
+    .m-accordion-content {
+        max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; 
+        padding: 0 30px; display: flex; flex-direction: column; gap: 15px;
+    }
+    .m-accordion-content a {
+        text-decoration: none; color: #555; font-size: 14px; font-family: 'Inter', sans-serif; transition: color 0.3s;
+    }
+    .m-accordion-content a:hover { color: #000; }
+    
+    /* Адаптација на хедерот и други панели */
+    .site-header { padding: 15px 20px; }
+    
+    /* ФИКС: ТРГАЊЕ НА ПАНЕЛИТЕ НАДВОР ОД ЕКРАН НА ТАБЛЕТ */
+    .cart-panel { width: 100%; right: -100% !important; }
+    .cart-panel.active { right: 0 !important; }
+    .search-panel { width: 100%; right: -100% !important; padding: 40px 20px; }
+    .search-panel.active { right: 0 !important; }
+    
+    .cart-header, .cart-content, .cart-footer { padding-left: 20px; padding-right: 20px; }
+    .search-input { font-size: 24px; }
+    
+    /* --- РЕСПОНЗИВНОСТ ЗА ABOUT US --- */
+    .hero { flex-direction: column; padding-top: 120px; text-align: center; }
+    .hero-content { padding: 0 5%; margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content p { max-width: 100%; }
+    .hero-image { width: 100%; height: 50vh; margin-top: 0; }
+
+    .features { grid-template-columns: repeat(2, 1fr); padding: 50px 5%; gap: 30px; }
+
+    .heritage { flex-direction: column; padding: 60px 5%; gap: 40px; text-align: center; }
+    .heritage-image img { box-shadow: none; }
+    .heritage-text h2 { font-size: 2.5rem; }
+    .heritage-text .divider { margin: 0 auto 30px auto; }
+
+    .process { padding: 60px 5%; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+
+    .promise { height: auto !important; padding: 80px 5% !important; background-position: center; }
+    .promise-content { text-align: center; padding-left: 0; margin: 0 auto; max-width: 100%; }
+    .promise-content h2 { font-size: 2.5rem !important; margin-bottom: 20px !important; }
+    .promise-content p { font-size: 1rem !important; max-width: 100% !important; margin: 0 auto !important; }
+    .promise-content .divider { margin: 0 auto 25px auto; }
+
+    .footer { padding: 60px 5% 30px; }
+    .footer-content { grid-template-columns: 1fr; gap: 40px; text-align: center; margin-bottom: 30px; }
+    .footer-brand p { margin: 20px auto 0; }
+    .newsletter-form { flex-direction: column; border-bottom: none; gap: 15px; }
+    .newsletter-form input { border-bottom: 1px solid #ccc; text-align: center; }
+    .newsletter-form button { width: 100%; padding: 12px; background: #000; color: #fff; }
+}
+/* Скриј го делот под футерот */
+.copyright, 
+.footer-bottom { 
+    display: none !important; 
+}
+/* ========================================= */
+/* --- КРИЕЊЕ САМО НА МОБИЛНОТО МЕНИ --- */
+/* ========================================= */
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005;
+    transition: opacity 0.4s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Го крие менито надвор од екран на десктоп */
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu-panel.active {
+    right: 0 !important; /* Го враќа во екран кога ќе се кликне */
+}

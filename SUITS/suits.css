@@ -1,0 +1,1878 @@
+/* --- РЕСЕТ И ОСНОВНИ СТИЛОВИ --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mobile-nav-panel,
+.mobile-nav-overlay {
+    display: none !important;
+}
+/* Сокриј го хамбургер копчето на десктоп */
+.hamburger-btn {
+    display: none !important;
+}
+body {
+    background-color: #FCFBFA; /* Луксузна скршено-бела нијанса */
+    font-family: 'Montserrat', sans-serif;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 100px;
+    padding-top: 90px; /* Обезбедува простор за фиксираното мени */
+}
+
+/* =========================================
+   САЈТ ХЕДЕР (ГЛАВНО МЕНИ)
+========================================= */
+.site-header {
+    position: fixed; /* Фиксирано од почеток за да нема сецкање */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    z-index: 1100;
+    background-color: #FCFBFA; /* Иницијално ја има истата убава луксузна боја */
+    color: #111111;            /* Темни букви за да се гледа цело време */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    transition: 
+        background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.4s ease;
+}
+/* КОГА HEADER Е СКРИЕН - НЕМА HOVER */
+.site-header.hide-header .mega-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* И линковите да не реагираат */
+.site-header.hide-header .nav-links a {
+    pointer-events: none;
+}
+/* Ефект кога ќе се помине со глувчето */
+.site-header:hover {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Стил кога е скролнат сајтот нагоре */
+.site-header.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Анимација за криење на менито при скролање надолу */
+.site-header.hide-header {
+    transform: translateY(-100%);
+}
+
+/* LOGO */
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-decoration: none;
+    color: black;
+}
+
+/* NAVIGATION */
+.nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-links a {
+    font-family: 'Cormorant Garamond', serif;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* ICONS */
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.05);
+}
+
+.clothing-wrapper,
+.tailoring-wrapper,
+.occasion-wrapper {
+    display: inline-block;
+}
+
+/* =========================================
+   MEGA MENU
+========================================= */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 8% 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(15px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0s linear 0.3s;
+}
+
+/* SHOW MENU */
+/* SHOW MENU САМО КОГА Е HOVER НА ЛИНКОТ */
+.clothing-wrapper > a:hover + .mega-menu,
+.tailoring-wrapper > a:hover + .mega-menu,
+.occasion-wrapper > a:hover + .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* КОГА ВЕЌЕ СИ ВНАТРЕ ВО МЕНИТО – ДА ОСТАНЕ ОТВОРЕНО */
+.mega-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* ACTIVE LINK */
+.clothing-wrapper:hover > a,
+.tailoring-wrapper:hover > a,
+.occasion-wrapper:hover > a {
+    text-decoration: underline !important;
+    text-underline-offset: 6px;
+    cursor: pointer !important;
+    color: #000000 !important;
+}
+
+/* MAIN LINKS */
+.clothing-wrapper > a,
+.tailoring-wrapper > a,
+.occasion-wrapper > a {
+    position: relative;
+    cursor: pointer !important;
+}
+
+/* HOVER BRIDGE */
+.clothing-wrapper > a::after,
+.tailoring-wrapper > a::after,
+.occasion-wrapper > a::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    z-index: 998;
+}
+
+/* =========================================
+   CLOTHING MENU
+========================================= */
+.mega-menu-left {
+    display: flex;
+    gap: 120px;
+}
+
+.mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.mega-menu-column h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.mega-menu-column a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: 1.5px !important;
+    color: #555555 !important;
+    font-weight: 400 !important;
+    text-decoration: none;
+    transition: color 0.3s ease !important;
+}
+
+.mega-menu-column a:hover {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+.mega-menu-right {
+    display: flex;
+    gap: 30px;
+}
+
+.mega-img-wrapper {
+    width: 250px;
+    height: 330px;
+    overflow: hidden;
+}
+
+.mega-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.mega-img-wrapper:hover img {
+    transform: scale(1.04);
+}
+
+/* =========================================
+   TAILORING MENU
+========================================= */
+.tailoring-grid {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+.tailoring-card {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+    height: 330px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.tailoring-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.tailoring-card:hover img {
+    transform: scale(1.04);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-title {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* =========================================
+   OCCASION MENU
+========================================= */
+.occasion-left {
+    width: 25%;
+}
+
+.occasion-right {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
+.occasion-card {
+    position: relative;
+    width: 250px;
+    height: 330px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.occasion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.occasion-card:hover img {
+    transform: scale(1.04);
+}
+
+.occasion-card .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.occasion-card .card-title {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* --- ХЕДЕР СЕКЦИЈА --- */
+.hero-header {
+    padding: 40px 0 35px 0;
+}
+
+.hero-header .subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #8C8276;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.hero-header .main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #111111;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.hero-header .gold-divider {
+    width: 35px;
+    height: 1px;
+    background-color: #B8976B;
+    margin: 15px 0 22px 0;
+}
+
+.hero-header .description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+/* --- STICKY ФИЛТЕР БАР --- */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ECEAE5;
+    border-bottom: 1px solid #ECEAE5;
+    padding: 15px 0;
+    background-color: #FCFBFA;
+    position: sticky;
+    top: 78px; /* Сега совршено се лепи под фиксното главно мени */
+    z-index: 1000;
+    /* ИНТЕГРИРАНО: Додадена е top транзиција со ист cubic-bezier како хедерот за перфектен синхронизиран скрол */
+    transition: top 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, padding 0.3s ease, background-color 0.3s ease;
+}
+
+/* НОВА КЛАСА: Кога главното мени се крие, филтерот оди скроз на top: 0 */
+.filter-bar.shift-up {
+    top: 0;
+}
+
+.filter-bar.is-sticky {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    padding: 20px 40px;
+    background-color: rgba(252, 251, 250, 0.98);
+    margin-left: -40px;
+    margin-right: -40px;
+}
+
+.filter-left, .filter-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #111111;
+    padding: 5px 10px;
+    background-color: #F5F3EE;
+    border-radius: 2px;
+}
+
+.filter-btn .icon {
+    width: 14px;
+    height: 14px;
+    fill: #111111;
+}
+
+.filter-dropdown {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #111111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filter-dropdown .arrow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid #111111;
+    border-bottom: 1px solid #111111;
+    transform: rotate(45deg);
+    margin-bottom: 3px;
+    transition: transform 0.2s ease;
+}
+
+.filter-dropdown:hover .arrow {
+    transform: rotate(-135deg);
+    margin-bottom: -1px;
+}
+
+.sort-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #8C8276;
+}
+
+.sort-value {
+    color: #B8976B;
+}
+
+/* --- ГРИД СО ПРОИЗВОДИ --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+}
+
+.product-card {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.image-container {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #EAEAEA; 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 0.25s ease-in-out, transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+}
+
+.product-card:hover .image-container::after {
+    opacity: 1;
+    transform: scale(1.10);
+}
+
+/* --- СЛИКИ ЗА КОСТИМИ --- */
+.suit-1 { background-image: url('../SUITS/slikiodela/crnoprvo.png'); }
+.suit-2 { background-image: url('../SUITS/slikiodela/vtoro.png'); }
+.suit-3 { background-image: url('../SUITS/slikiodela/mashna.png'); }
+.suit-4 { background-image: url('../SUITS/slikiodela/treto.png'); }
+
+.suit-1::after { background-image: url('../SUITS/slikiodela/crnoprvohover.png'); }
+.suit-2::after { background-image: url('../SUITS/slikiodela/vtorohover.png'); }
+.suit-3::after { background-image: url('../SUITS/slikiodela/mashnahover.png'); }
+.suit-4::after { background-image: url('../SUITS/slikiodela/tretohover.png'); }
+
+.suit-5 { background-image: url('../SUITS/slikiodela/kosula.png'); }
+.suit-6 { background-image: url('../SUITS/slikiodela/crveno.png'); }
+.suit-7 { background-image: url('../SUITS/slikiodela/zeleno.png'); }
+.suit-8 { background-image: url('../SUITS/slikiodela/kafeavo.png'); }
+
+.suit-5::after { background-image: url('../SUITS/slikiodela/kosulahover.png'); }
+.suit-6::after { background-image: url('../SUITS/slikiodela/crvenohover.png'); }
+.suit-7::after { background-image: url('../SUITS/slikiodela/zelenohover.png'); }
+.suit-8::after { background-image: url('../SUITS/slikiodela/kafeavohover.png'); }
+
+
+/* СРЦЕ КОПЧЕ */
+.wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #FFFFFF;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+}
+
+.wishlist-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #111111;
+    stroke-width: 1.5;
+}
+
+.wishlist-btn:hover { transform: scale(1.05); }
+.wishlist-btn:hover svg { fill: #111111; }
+
+/* ИНФОРМАЦИИ ЗА ПРОИЗВОД */
+.product-info {
+    padding: 20px 0 15px 0;
+    background-color: #FCFBFA;
+}
+
+.product-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.product-fabric {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #777777;
+    margin-bottom: 12px;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price {
+    font-size: 13px;
+    font-weight: 400;
+    color: #111111;
+}
+
+/* ПЛУС КОПЧЕ */
+.add-btn {
+    background: none;
+    border: 1px solid #D5D1C9;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: #8C8276;
+}
+
+.add-btn:hover {
+    border-color: #111111;
+    background-color: #111111;
+}
+
+.add-btn:hover svg { fill: #FFFFFF; }
+
+/* --- СЕКЦИЈА: ФУТЕР (FOOTER) --- */
+.site-footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 160px 8% 30px 8%; /* <--- 160px padding горе (60 стари + 100 нови) */
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+/* Лева страна (Лого и инпут) */
+.footer-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+}
+
+.newsletter-box {
+    display: flex;
+    border: 1px solid #000000;
+    max-width: 300px;
+    height: 45px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.newsletter-btn {
+    background: transparent;
+    border: none;
+    border-left: 1px solid #000000;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Десна страна (Линкови) */
+.footer-links {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+.link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* --- НОВИ СТИЛОВИ ЗА ЛИНКОВИТЕ И АНИМАЦИЈАТА --- */
+.footer-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+    font-weight: 400;
+}
+
+/* Анимација - Линија што се појавува на ховер */
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: #000000;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+/* Долна лента */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.bottom-left, 
+.bottom-right {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.bottom-center {
+    display: flex;
+    gap: 40px; /* Ги става Phone и Email во еден ред како на сликата */
+    align-items: center;
+}
+
+.bottom-center p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    color: #000000;
+}
+
+/* Социјални мрежи (Икони и текст) */
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Тргање на анимацијата за социјалните мрежи за да не се подвлекува иконата */
+.social-link::after {
+    display: none;
+}
+
+.social-link:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* --- MEGA MENU CSS (ОСНОВНА ЛОГИКА) --- */
+.clothing-wrapper, 
+.tailoring-wrapper, 
+.occasion-wrapper {
+    /* Тргнат е падингот за да не се поместува копчето! */
+    display: inline-block; 
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 8% 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Спречува менито да се збуни додека е скриено */
+    transform: translateY(15px); 
+    
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    
+    /* ТРГНАТ Е ДИЛЕЈОТ ОД 0.15s ЗА ДА СЕ ГАСИ ИСТОВРЕМЕНО СО ДРУГИТЕ */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* Прикажување на менито при hover за СИТЕ ТРИ менија */
+.clothing-wrapper:hover .mega-menu, 
+.tailoring-wrapper:hover .mega-menu,
+.occasion-wrapper:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    
+    /* Кога ќе ставиш маус, се пали ВЕДНАШ без чекање (0s delay) */
+    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s, visibility 0s linear 0s;
+}
+
+/* Линија под текстот и курсор при hover И додека си внатре во самото мени */
+.clothing-wrapper:hover > a, 
+.tailoring-wrapper:hover > a,
+.occasion-wrapper:hover > a {
+    text-decoration: underline !important;
+    text-underline-offset: 6px; /* Ја спушта линијата малку подолу за да изгледа поелегантно */
+    cursor: pointer !important;
+    color: #000000 !important; /* Ова осигурува дека зборот горе останува црн и активен */
+}
+
+/* Позиционирање на главните линкови и курсор 'раче' */
+.clothing-wrapper > a, 
+.tailoring-wrapper > a,
+.occasion-wrapper > a {
+    position: relative; 
+    cursor: pointer !important;
+}
+
+/* НОВ НЕВИДЛИВ МОСТ (Го поправа Glitch-от без да чепка дизајн, стои само под зборот) */
+.clothing-wrapper > a::after, 
+.tailoring-wrapper > a::after,
+.occasion-wrapper > a::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 30px; /* <--- СМЕНИ ГО ОД 60px НА 30px */
+    background: transparent;
+    z-index: 998;
+}
+
+/* --- CLOTHING МЕНИ ДИЗАЈН --- */
+.mega-menu-left {
+    display: flex;
+    gap: 120px;
+}
+
+.mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.mega-menu-column h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.mega-menu-column a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: 1.5px !important;
+    color: #555555 !important;
+    font-weight: 400 !important;
+    transition: color 0.3s ease !important;
+    text-decoration: none;
+}
+
+.mega-menu-column a:hover {
+    color: #000000 !important;
+    opacity: 1 !important; 
+}
+
+.mega-menu-right {
+    display: flex;
+    gap: 30px;
+}
+
+.mega-img-wrapper {
+    width: 250px; 
+    height: 330px;
+    overflow: hidden;
+}
+
+.mega-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.mega-img-wrapper:hover img {
+    transform: scale(1.04);
+}
+
+/* --- TAILORING МЕНИ ДИЗАЈН --- */
+.tailoring-grid {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center; /* Ги центрира 3-те картички убаво на средина */
+}
+
+.tailoring-card {
+    position: relative;
+    flex: 1;
+    max-width: 380px; /* Ограничување на ширината за да изгледа елегантно */
+    height: 330px;    /* Иста висина како сликите во Clothing менито */
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.tailoring-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Зум ефект како кај Clothing */
+.tailoring-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Темниот градиент одоздола за да се чита текстот */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Градиентот покрива само долна половина */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none; /* Да не пречи на кликањето */
+}
+
+/* Текстот врз сликата */
+.card-title {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* --- OCCASION МЕНИ ДИЗАЈН --- */
+.occasion-left {
+    width: 25%;
+}
+
+.occasion-right {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
+.occasion-card {
+    position: relative;
+    width: 250px; /* Иста ширина како сликите во Clothing */
+    height: 330px; /* Иста висина како сите други */
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.occasion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.occasion-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Градиент за Occasion (ист ефект, помал опсег) */
+.occasion-card .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Текстот врз сликата (според сликата: помал, десно порамнет) */
+.occasion-card .card-title {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+
+/* РЕСПОНЗИВНОСТ */
+@media (max-width: 1024px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .filter-bar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+/* ========================================= */
+/* --- SEARCH PANEL (RIGHT SLIDER) --- */
+/* ========================================= */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005; 
+    transition: opacity 0.5s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    left: auto;
+    width: 600px; 
+    max-width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 80px 60px; 
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.06); 
+}
+
+.search-panel.active {
+    right: 0; 
+}
+
+.search-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    padding: 10px;
+}
+
+.search-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.search-content {
+    margin-top: 80px;
+}
+
+.search-title {
+    font-family: 'Inter', sans-serif; 
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    color: #666666;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5; 
+    padding-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; 
+    color: #000000;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #cccccc;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.search-submit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    padding-left: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.search-submit-btn:hover {
+    opacity: 0.5;
+}
+
+.search-suggestions {
+    margin-top: 50px; 
+}
+
+.suggestions-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888888; 
+    margin-bottom: 25px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px; 
+}
+
+.suggestions-list li a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; 
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.suggestions-list li a:hover {
+    opacity: 0.5;
+    transform: translateX(8px);
+}
+
+/* ========================================= */
+/* --- CART PANEL (SHOPPING BAG) --- */
+/* ========================================= */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    z-index: 10005;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 10006;
+    transition: right .6s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    padding: 5px;
+}
+
+.cart-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+.cart-content {
+    flex: 1;
+    padding: 30px 50px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.cart-item-img-wrapper {
+    width: 120px;
+    height: 160px;
+    background-color: #f9f9f9;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.cart-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+}
+
+.cart-item-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.cart-item-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #777777;
+    margin-bottom: 5px;
+}
+
+.cart-item-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    transition: background-color 0.3s;
+}
+
+.qty-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.qty-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999999;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cart-item-remove:hover {
+    color: #000000;
+}
+
+.cart-footer {
+    padding: 30px 50px;
+    border-top: 1px solid #eeeeee;
+    background-color: #ffffff;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-shipping-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #777777;
+    margin-bottom: 25px;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-checkout-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Иницијално го криеме мобилниот блок на десктоп верзијата */
+.filter-mobile-options {
+    display: none;
+}
+
+/* =========================================================================
+   ПРОФЕСИОНАЛНИ СТИЛОВИ ЗА МОБИЛНИ УРЕДИ И ТАБЛЕТИ (ПОД 1024px)
+========================================================================= */
+@media (max-width: 1024px) {
+    /* Основна конфигурација */
+    body {
+        padding-top: 75px;
+        padding-bottom: 60px;
+    }
+
+    .container {
+        padding: 0 24px;
+    }
+
+    /* Хедер респонзивност (prvprimer.JPG) */
+    .site-header {
+        padding: 15px 24px !important;
+        height: 75px;
+    }
+
+    .logo {
+        font-size: 26px;
+        letter-spacing: 3px;
+    }
+
+    /* Сокривање на десктоп навигацијата */
+    .nav-links,
+    .id-profile-desktop {
+        display: none !important;
+    }
+
+.hamburger-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+    .header-icons {
+        gap: 15px;
+    }
+
+    /* Херо секција */
+    .hero-header {
+        padding: 30px 0 20px 0;
+    }
+
+    .hero-header .main-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .hero-header .description {
+        font-size: 13px;
+    }
+
+    /* =========================================================================
+       ЗАКОУВАНО СЕКУНДАРНО МЕНИ - СТАБИЛНО НА СИТЕ ТЕЛЕФОНИ И ТАБЛЕТИ (50/50)
+    ========================================================================= */
+    #sticky-menu.filter-bar {
+        top: 75px !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important; /* Го тргаме падингот за да не мрда лево-десно */
+        margin: 0 !important;
+        border-bottom: 1px solid #eeeeee !important;
+        background-color: #FCFBFA !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+    #sticky-menu.filter-bar.shift-up {
+    top: 0 !important;
+}
+    /* Комплетно ги сокриваме десктоп филтрите (Type, Fabric, Colour, Size, Sort By) */
+    #sticky-menu .filter-left,
+    #sticky-menu .filter-right {
+        display: none !important;
+    }
+
+    /* Го активираме мобилниот Flexbox контејнер */
+    .filter-mobile-options {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Двете копчиња делат точно по 50% на секој можен екран */
+    .mob-filter-btn {
+        flex: 1 !important;
+        width: 50% !important;
+        height: 52px !important; /* Професионална висина за лесен допир со прст */
+        background: none !important;
+        border: none !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        color: #111111 !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        transition: background-color 0.2s ease;
+    }
+
+    /* Елегантна тенка линија точно во средината помеѓу двете опции */
+    .mob-filter-btn:first-child {
+        border-right: 1px solid #eeeeee !important;
+    }
+
+    /* Нежен визуелен ефект на клик */
+    .mob-filter-btn:active {
+        background-color: #f5f4f2 !important;
+    }
+
+    /* Продукт грид за таблети и телефони */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+        padding-top: 25px;
+    }
+
+    .product-info {
+        padding: 12px 0;
+    }
+
+    .product-title {
+        font-size: 12px;
+    }
+
+    /* =========================================================================
+       МЕНУ ДИЗАЈН НА ДЕСНАТА СТРАНА (kateg.JPG) - НЕДОПРЕНО И СИГУРНО
+    ========================================================================= */
+.mobile-nav-overlay {
+        display: block !important; /* Го враќа назад на мобилен */
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 100000;
+        transition: opacity 0.4s ease;
+    }
+
+    .mobile-nav-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+.mobile-nav-panel {
+        display: flex !important; /* Го враќа назад на мобилен */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 420px;
+        max-width: 100%;
+        height: 100vh;
+        background-color: #ffffff;
+        z-index: 100001;
+        transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        flex-direction: column;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .mobile-nav-panel.active {
+        right: 0;
+    }
+
+    .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 24px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        height: 75px;
+    }
+
+    .mobile-nav-logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 24px;
+        letter-spacing: 3px;
+        color: #000000;
+    }
+
+    .mobile-nav-close, 
+    .mobile-nav-user {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #000000;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-nav-content {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    /* Хармоника ефект (Accordion) за менито */
+    .mob-accordion-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .mob-accordion-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 24px;
+        background: none;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: #111111;
+        cursor: pointer;
+        text-align: left;
+        transition: background-color 0.3s ease;
+    }
+
+    .mob-accordion-trigger:hover {
+        background-color: rgba(0, 0, 0, 0.01);
+    }
+
+    .mob-arrow {
+        font-size: 12px;
+        font-family: monospace;
+        color: #111111;
+        transition: transform 0.3s ease;
+    }
+
+    .mob-accordion-item.active .mob-accordion-trigger {
+        background-color: #FCFBFA;
+    }
+
+    .mob-accordion-item.active .mob-arrow {
+        transform: rotate(180deg);
+    }
+
+    .mob-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        background-color: #FCFBFA;
+        transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .mob-accordion-item.active .mob-accordion-content {
+        max-height: 600px;
+    }
+
+    .mob-mega-wrapper {
+        padding: 20px 24px 30px 24px;
+    }
+
+    .mob-mega-wrapper h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #000000;
+        margin-bottom: 15px;
+    }
+
+    .mob-submenu-links {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    
+    .mob-submenu-links.no-title {
+        margin-bottom: 5px;
+    }
+
+    .mob-submenu-links a {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #555555;
+        text-decoration: none;
+        letter-spacing: 1px;
+        display: block;
+        transition: color 0.2s;
+    }
+
+    .mob-submenu-links a:hover {
+        color: #000000;
+    }
+
+    .mob-mega-images-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .mob-img-container {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background-color: #f0f0f0;
+    }
+
+    .mob-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Футер респонзивност */
+    .site-footer {
+        padding: 80px 24px 30px 24px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .bottom-center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* =========================================================================
+       ПЕРФЕКТНА ОПТИМИЗАЦИЈА ЗА КОРПАТА (tret primer.JPG) - НЕДОПРЕНО
+    ========================================================================= */
+    .cart-panel {
+        width: 100% !important;
+        right: -100%;
+    }
+
+    .cart-header {
+        padding: 20px 24px;
+        height: 75px;
+    }
+
+    .cart-title {
+        font-size: 26px;
+    }
+
+    .cart-content {
+        padding: 24px;
+    }
+
+    .cart-item {
+        gap: 16px;
+        margin-bottom: 25px;
+    }
+
+    .cart-item-img-wrapper {
+        width: 95px;
+        height: 125px;
+    }
+
+    .cart-item-name {
+        font-size: 18px;
+    }
+
+    .cart-item-price {
+        font-size: 13px;
+    }
+
+    .qty-btn {
+        padding: 6px 10px;
+    }
+
+    .cart-footer {
+        padding: 20px 24px;
+    }
+}
+
+/* Оптимизација за многу мали телефони (под 600px) */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr !important; /* Еден производ во ред на мали екрани за подобар UX */
+    }
+    
+    /* Тргнати се сите претходни редефинирања за .filter-bar тука, со цел менито да остане перфектно заковано на 50/50 и на најмалите телефони */
+}

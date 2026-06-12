@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gentaro - Weighhouse Suit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+      <header class="site-header">
+    <a href="../index.html" class="logo">Gentaro</a>
+
+    <nav class="nav-links">
+        <!-- CLOTHING -->
+        <div class="clothing-wrapper nav-item">
+            <a href="#">Clothing</a>
+            <div class="mega-menu">
+                <div class="mega-menu-left">
+                    <div class="mega-menu-column">
+                        <h4>Categories</h4>
+                        <a href="../SUITS/suits.html">Shop All</a>
+                        <a href="../SUITS/suits.html">Suits</a>
+                        <a href="../SUITS/suits.html">Outerwear</a>
+                        <a href="../SUITS/suits.html">Accessories</a>
+                    </div>
+                    <div class="mega-menu-column">
+                        <h4>Explore</h4>
+                        <a href="#">New Arrivals</a>
+                        <a href="#">Must Have</a>
+                        <a href="#">Summer 2026</a>
+                    </div>
+                </div>
+                <div class="mega-menu-right">
+                    <div class="mega-img-wrapper">
+                        <img src="../slikizaprva/levoclothing.png" alt="">
+                    </div>
+                    <div class="mega-img-wrapper">
+                        <img src="../slikizaprva/clothingdesno.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAILORING -->
+        <div class="tailoring-wrapper nav-item">
+            <a href="#">Tailoring</a>
+            <div class="mega-menu">
+                <div class="tailoring-grid">
+                    <a href="#" class="tailoring-card">
+                        <img src="../slikizaprva/BESPOKETAILORING.png" alt="">
+                        <div class="card-overlay"></div>
+                        <span class="card-title">Bespoke Tailoring</span>
+                    </a>
+                    <a href="#" class="tailoring-card">
+                        <img src="../slikizaprva/MEASURE.png" alt="">
+                        <div class="card-overlay"></div>
+                        <span class="card-title">Made to Measure</span>
+                    </a>
+                    <a href="../TAILORING/tailoring.html" class="tailoring-card">
+                        <img src="../slikizaprva/PROCESS.jpg" alt="">
+                        <div class="card-overlay"></div>
+                        <span class="card-title">The Process</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- OCCASION -->
+        <div class="occasion-wrapper nav-item">
+            <a href="#">Occasion</a>
+            <div class="mega-menu">
+                <div class="occasion-left">
+                    <div class="mega-menu-column">
+                        <h4>Special Occasions</h4>
+                        <a href="#">Party Season</a>
+                        <a href="#">Wedding</a>
+                        <a href="#">Date Night</a>
+                        <a href="#">Black Tie</a>
+                        <h4 style="margin-top: 30px;">Everyday</h4>
+                        <a href="#">Weekend</a>
+                        <a href="#">Work</a>
+                    </div>
+                </div>
+                <div class="occasion-right">
+                    <a href="#" class="occasion-card">
+                        <img src="../slikizaprva/occasioneden.png" alt="">
+                        <div class="card-overlay"></div>
+                        <span class="card-title">Work</span>
+                    </a>
+                    <a href="#" class="occasion-card">
+                        <img src="../slikizaprva/occasiondva.png" alt="">
+                        <div class="card-overlay"></div>
+                        <span class="card-title">Party</span>
+                    </a>
+                    <a href="#" class="occasion-card">
+                        <img src="../slikizaprva/occasiontri.png" alt="">
+                        <div class="card-overlay"></div>
+                        <span class="card-title">Weekend</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <a href="../ABOUT/about.html">About us</a>
+        <a href="../CONTACT/contact.html">Contact</a>
+    </nav>
+
+    <div class="header-icons">
+        <button class="icon-btn" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        
+        <a href="../LOGIN/login.html" class="icon-btn desktop-profile" aria-label="Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        
+        <button class="icon-btn" aria-label="Cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        </button>
+
+        <!-- ХАМБУРГЕР МЕНИ ЗА МОБИЛЕН -->
+        <button class="icon-btn mobile-hamburger" id="mobileMenuOpenBtn" aria-label="Menu" style="display: none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </div>
+</header>
+    
+<section class="product-section">
+    <!-- Сликите си остануваат чисти како што си беа на почетокот -->
+    <div class="product-images">
+        <img src="../SUITS/slikiodela/crnoprvo.png" alt="Navy Wool Suit Front">
+        <img src="../SUITS/slikiodela/crnoprvohover.png" alt="Navy Wool Suit Detail">
+    </div>
+
+    <!-- ТОЧКИТЕ ГИ СТАВАМЕ ТУКА: Помеѓу сликите и деталите -->
+    <div class="swiper-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+    </div>
+    <div class="product-details">
+        <div class="details-content">
+            <h1 class="product-title">Wool Single Breasted Weighhouse Suit</h1>
+            <p class="product-price">MKD 183,400</p>
+            
+            <div class="color-selection">
+                <p>Midnight Black</p>
+                <div class="color-options">
+                    <button class="color-btn grey"></button>
+                    <button class="color-btn navy active"></button>
+                </div>
+            </div>
+
+            <div class="size-selection">
+                <div class="size-header">
+                    <span>Size</span>
+                    <a href="#" class="size-guide">Size Guide</a>
+                </div>
+                <div class="size-options">
+                    <button class="size-btn">44</button>
+                    <button class="size-btn disabled">46</button>
+                    <button class="size-btn disabled">48</button>
+                    <button class="size-btn disabled">50</button>
+                    <button class="size-btn">52</button>
+                    <button class="size-btn">54</button>
+                    <button class="size-btn disabled">56</button>
+                    <button class="size-btn disabled">58</button>
+                </div>
+            </div>
+
+            <div class="size-recommendation">
+                <strong>SIZE RECOMMENDATION</strong>
+                <p>Fits true to size, take your normal size.</p>
+            </div>
+
+            <button class="add-to-cart-btn">Select a Size</button>
+
+            <div class="product-accordion">
+                <div class="accordion-tabs">
+                    <button class="tab active" data-target="tab-details">Product Details</button>
+                    <button class="tab" data-target="tab-size">Size & Fit</button>
+                    <button class="tab" data-target="tab-delivery">Delivery & Returns</button>
+                </div>
+                
+                <div class="accordion-content-wrapper">
+                    <div class="tab-pane active" id="tab-details">
+                        <p>The Weighhouse suit embodies what we do best. Sharp yet soft, it's cut from the finest navy wool and boasts our signature unstructured house cut. The jacket has a two button front, subtle notch lapels, and flap pockets.</p>
+                        <p>Perfect for either work or play, how you style this suit depends on the occasion.</p>
+                        <p class="sku">SKU: WEGH01-MIN</p>
+                    </div>
+                    
+                    <div class="tab-pane" id="tab-size">
+                        <p><strong>Fit:</strong> Tailored slim fit. We recommend sizing up if you prefer a slightly looser, traditional drape.</p>
+                        <p><strong>Model:</strong> Our model is 185cm (6'1") tall, has a 98cm (38.5") chest, and wears a size 48 jacket.</p>
+                        <p><strong>Trousers:</strong> Supplied unhemmed so they can be tailored to your exact length. Featuring a comfortable mid-rise waist.</p>
+                    </div>
+                    
+                    <div class="tab-pane" id="tab-delivery">
+                        <p><strong>Delivery:</strong> Free standard shipping on all orders over MKD 15,000. Express delivery (1-2 business days) is available at checkout.</p>
+                        <p><strong>Returns:</strong> We offer a 14-day free return policy for unworn items with original tags still attached. Custom altered suits cannot be returned.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="similar-products">
+    <h2 class="similar-title">You May Also Like</h2>
+    
+    <div class="similar-grid">
+        <a href="#" class="similar-card">
+            <div class="similar-img-wrapper">
+                <img src="../SUITS/slikiodela/crnoprvohover.png" alt="Charcoal Grey Suit">
+            </div>
+            <div class="similar-info">
+                <h3>Charcoal Grey Wool Suit</h3>
+                <p>MKD 175,000</p>
+            </div>
+        </a>
+        
+        <a href="#" class="similar-card">
+            <div class="similar-img-wrapper">
+                <img src="../SUITS/slikiodela/mashna.png" alt="Classic Black Tuxedo">
+            </div>
+            <div class="similar-info">
+                <h3>Classic Black Tuxedo</h3>
+                <p>MKD 192,500</p>
+            </div>
+        </a>
+
+        <a href="#" class="similar-card">
+            <div class="similar-img-wrapper">
+                <img src="../SUITS/slikiodela/kafeavo.png" alt="Light Grey Linen Suit">
+            </div>
+            <div class="similar-info">
+                <h3>Light Grey Linen Suit</h3>
+                <p>MKD 168,000</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-left">
+            <h2 class="footer-logo">G e n t a r o</h2>
+            <div class="newsletter-box">
+                <input type="email" placeholder="Send Email" class="newsletter-input">
+                <button class="newsletter-btn">→</button>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <div class="link-column">
+                <a href="#" class="footer-link">Your Account</a>
+                <a href="#" class="footer-link">Delivery &</a>
+                <a href="#" class="footer-link">Returns</a>
+                <a href="#" class="footer-link">FAQs</a>
+                <a href="#" class="footer-link">Contact Us</a>
+            </div>
+            <div class="link-column">
+                <a href="#" class="footer-link">Shop All</a>
+                <a href="#" class="footer-link">T-Shirts & Polos</a>
+                <a href="#" class="footer-link">Shirts</a>
+                <a href="#" class="footer-link">Trousers</a>
+            </div>
+            <div class="link-column">
+                <a href="#" class="footer-link">Outerwear</a>
+                <a href="#" class="footer-link">Loungewear</a>
+                <a href="#" class="footer-link">Accessories</a>
+            </div>
+            <div class="link-column">
+                <a href="#" class="footer-link">Our story</a>
+                <a href="#" class="footer-link">Shop by Occasion</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="bottom-left">
+            <a href="#" class="footer-link">Terms&Conditions</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+        </div>
+        
+        <div class="bottom-center">
+            <p>Phone: +078000000</p>
+            <p>Email: petardonevski21@gmail.com</p>
+        </div>
+        
+        <div class="bottom-right">
+            <a href="#" class="footer-link social-link">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                Instagram
+            </a>
+            <a href="#" class="footer-link social-link">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"></path>
+                </svg>
+                Facebook
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- SEARCH PANEL -->
+<div class="search-overlay" id="searchOverlay"></div>
+<div class="search-panel" id="searchPanel">
+    <button class="search-close-btn" id="searchCloseBtn" aria-label="Close Search">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="search-content">
+        <h2 class="search-title">Search</h2>
+        <div class="search-input-wrapper">
+            <input type="text" class="search-input" placeholder="What are you looking for?">
+            <button class="search-submit-btn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </div>
+        <div class="search-suggestions">
+            <h3 class="suggestions-heading">Search Suggestions</h3>
+            <ul class="suggestions-list">
+                <li><a href="../PRVASTRANA/SUITS/suits.html">Suits & Tailoring</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Summer 2026 Collection</a></li>
+                <li><a href="#">Accessories</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <h2 class="cart-title">Shopping Bag</h2>
+        <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close Cart">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+    
+    <div class="cart-content">
+        <div class="cart-item">
+            <div class="cart-item-img-wrapper">
+                <img src="../PRODUCTS6CRVENO/slikiodela/crveno.png" alt="Graphite Tailoring" class="cart-item-img">
+            </div>
+            <div class="cart-item-details">
+                <div class="cart-item-top">
+                    <h3 class="cart-item-name">Graphite Tailoring</h3>
+                    <div class="price-container">
+                        <span class="currency">€</span>
+                        <p class="cart-item-price">1,250.00</p>
+                    </div>
+                </div>
+                <p class="cart-item-meta">Color: Charcoal</p>
+                <p class="cart-item-meta">Size: 40R</p>
+                <div class="cart-item-bottom">
+                    <div class="cart-quantity">
+                        <button class="qty-btn">-</button>
+                        <span class="qty-num">1</span>
+                        <button class="qty-btn">+</button>
+                    </div>
+                    <button class="cart-item-remove">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-footer">
+        <div class="cart-subtotal">
+            <span>SUBTOTAL</span>
+            <span>€ 1,250.00</span>
+        </div>
+        <p class="cart-shipping-note">Taxes and shipping calculated at checkout.</p>
+        <button class="cart-checkout-btn">PROCEED TO CHECKOUT</button>
+    </div>
+</div>
+
+<!-- МОБИЛНО МЕНИ (СЕ ПОЈАВУВА ОД ЛЕВО) -->
+<div class="mobile-menu-panel" id="mobileMenuPanel">
+    <div class="mobile-menu-top">
+        <a href="../LOGIN/login.html" class="mobile-icon" aria-label="Profile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <a href="../index.html" class="mobile-logo">Gentaro</a>
+        <button class="mobile-close-btn" id="mobileMenuCloseBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+    
+    <div class="mobile-menu-content">
+        <!-- Clothing -->
+        <div class="mobile-accordion">
+            <button class="mobile-accordion-btn">Clothing <span class="caret">v</span></button>
+            <div class="mobile-accordion-body">
+                <h4 class="mob-cat-title">CATEGORIES</h4>
+                <a href="../SUITS/suits.html">Shop All</a>
+                <a href="../SUITS/suits.html">Suits</a>
+                <a href="../SUITS/suits.html">Outerwear</a>
+                <a href="../SUITS/suits.html">Accessories</a>
+                <div class="mob-cat-images">
+                    <img src="../slikizaprva/levoclothing.png" alt="">
+                    <img src="../slikizaprva/clothingdesno.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tailoring -->
+        <div class="mobile-accordion">
+            <button class="mobile-accordion-btn">Tailoring <span class="caret">v</span></button>
+            <div class="mobile-accordion-body">
+                <a href="#">Bespoke Tailoring</a>
+                <a href="#">Made to Measure</a>
+                <a href="../TAILORING/tailoring.html">The Process</a>
+            </div>
+        </div>
+
+        <!-- Occasion -->
+        <div class="mobile-accordion">
+            <button class="mobile-accordion-btn">Occasion <span class="caret">v</span></button>
+            <div class="mobile-accordion-body">
+                <a href="#">Party Season</a>
+                <a href="#">Wedding</a>
+                <a href="#">Work</a>
+            </div>
+        </div>
+
+        <a href="../ABOUT/about.html" class="mobile-single-link">About us <span class="caret">v</span></a>
+        <a href="../CONTACT/contact.html" class="mobile-single-link">Contact <span class="caret">v</span></a>
+    </div>
+</div>
+
+</body>
+</html>

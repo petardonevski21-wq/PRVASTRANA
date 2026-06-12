@@ -1,0 +1,247 @@
+.shop-now-btn {
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 3px;
+    position: relative;
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* Креирање на линијата под текстот */
+.shop-now-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff;
+    /* Поставување на почетна точка од десно за линијата да се собира натаму */
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Ефект кога ќе ја hover-неш линијата (исчезнува со собирање на десно) */
+.shop-now-btn:hover::after {
+    transform: scaleX(0);
+}
+/* ========================================= */
+/* --- НОВО: SHOPPING BAG PANEL          --- */
+/* ========================================= */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10005;
+    transition: opacity 0.5s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 500px;
+    max-width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10006;
+    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.06);
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #000000;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.cart-close-btn:hover {
+    transform: rotate(90deg);
+    opacity: 0.5;
+}
+
+/* Содржина на кошничката */
+.cart-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 50px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.cart-item-img-wrapper {
+    width: 100px;
+    height: 130px;
+    flex-shrink: 0;
+}
+
+.cart-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.cart-item-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cart-item-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #777777;
+    margin-bottom: 4px;
+}
+
+.cart-item-bottom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    padding: 5px 10px;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    padding: 0 5px;
+}
+
+.qty-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    margin: 0 15px;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999999;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.cart-item-remove:hover {
+    color: #000000;
+}
+
+/* Футер на кошничката */
+.cart-footer {
+    padding: 40px 50px;
+    border-top: 1px solid #f0f0f0;
+    background-color: #ffffff;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.cart-shipping-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #888888;
+    margin-bottom: 30px;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-checkout-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
